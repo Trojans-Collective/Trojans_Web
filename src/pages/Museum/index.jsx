@@ -2,17 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { SectionHeader } from '../../components/ui/SectionHeader';
 import { PageTransition } from '../../components/ui/PageTransition';
 import { ImageFrame } from '../../components/ui/ImageFrame';
-import { Badge } from '../../components/ui/Badge';
 import { Button } from '../../components/ui/Button';
 import { ModalOverlay } from '../../components/ui/ModalOverlay';
 import { MUSEUM_ROOMS } from '../../data/milestones';
 import { getAssetById } from '../../assets/assetManifest';
-import { Terminal, Gamepad2, Compass, Eye, Shield, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Compass, Eye, ArrowRight, ArrowLeft } from 'lucide-react';
 
 export function MuseumPage() {
   const [activeRoomIndex, setActiveRoomIndex] = useState(0);
   const [inspectedExhibit, setInspectedExhibit] = useState(null);
-  const [viewMode, setViewMode] = useState('walkthrough'); // 'walkthrough' or 'specs'
 
   const activeRoom = MUSEUM_ROOMS[activeRoomIndex];
   const activeAsset = getAssetById(activeRoom.keyExhibit);
@@ -43,8 +41,8 @@ export function MuseumPage() {
         <SectionHeader
           index="08_VIRTUAL_MUSEUM"
           tag="TIMELINE UNIVERSE"
-          title="Playable 3D Virtual Museum"
-          subtitle="A spatial timeline universe structured into 5 connected architectural rooms. Step into our journey, examine authentic photographic exhibits, and explore what we've built."
+          title="Virtual Museum"
+          subtitle="Explore five rooms in the collective archive. Choose a room, view its photograph, or press F to inspect it."
         />
 
         {/* 3D Museum HUD & Interactive Navigation Console */}
@@ -52,19 +50,14 @@ export function MuseumPage() {
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-obsidian-border">
             {/* Museum Status Readout */}
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-sm bg-lime/10 border border-lime/30 text-lime flex items-center justify-center">
-                <Terminal className="w-5 h-5" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-lime/10 text-lime">
+                <Compass className="h-5 w-5" />
               </div>
               <div>
-                <div className="flex items-center gap-2">
-                  <Badge variant="lime" dot size="sm">
-                    MUSEUM ENGINE V1 ARCHITECTURE
-                  </Badge>
-                  <span className="font-mono text-xs text-silver-dark">
-                    ROOM {activeRoom.number} / 05
-                  </span>
-                </div>
-                <h3 className="font-display text-xl font-bold text-silver-bright mt-0.5">
+                <span className="font-mono text-xs text-silver-dark">
+                  ROOM {activeRoom.number} / 05
+                </span>
+                <h3 className="mt-0.5 font-display text-xl font-bold text-silver-bright">
                   {activeRoom.title}
                 </h3>
               </div>
@@ -72,13 +65,13 @@ export function MuseumPage() {
 
             {/* Keyboard Command Cheat Sheet */}
             <div className="flex flex-wrap items-center gap-3 font-mono text-xs">
-              <span className="px-2.5 py-1 rounded-xs bg-obsidian-surface border border-obsidian-border text-silver-dark">
-                NAVIGATE: <strong className="text-lime">[W][A][S][D] / ARROWS</strong>
+              <span className="text-silver-dark">
+                ROOMS: <strong className="text-lime">[A][D] / ARROWS</strong>
               </span>
-              <span className="px-2.5 py-1 rounded-xs bg-obsidian-surface border border-obsidian-border text-silver-dark">
+              <span className="text-silver-dark">
                 INSPECT: <strong className="text-lime">[F]</strong>
               </span>
-              <span className="px-2.5 py-1 rounded-xs bg-obsidian-surface border border-obsidian-border text-silver-dark">
+              <span className="text-silver-dark">
                 DISMISS: <strong className="text-silver-bright">[ESC]</strong>
               </span>
             </div>
@@ -162,11 +155,6 @@ export function MuseumPage() {
                 {activeRoom.description}
               </p>
 
-              <div className="p-4 rounded-md bg-obsidian-surface border border-obsidian-border font-mono text-xs text-silver-dark space-y-1 mb-6">
-                <div>THEME: <span className="text-silver">{activeRoom.theme}</span></div>
-                <div>EXHIBIT ID: <span className="text-lime">{activeRoom.keyExhibit}</span></div>
-                <div>STATUS: <span className="text-silver">3D PHYSICS MESH READY</span></div>
-              </div>
             </div>
 
             {/* Room Stepper Controls */}
@@ -206,22 +194,6 @@ export function MuseumPage() {
           </div>
         </div>
 
-        {/* 3D Museum Architecture Specification Callout */}
-        <div className="p-6 rounded-md bg-obsidian-surface border border-obsidian-border grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs text-silver-dark">
-          <div>
-            <span className="text-lime block mb-1">// AVATAR & CAMERA</span>
-            <span>Third-person camera with mouse pitch/yaw, WASD physics locomotion, and kinematic collision bounds.</span>
-          </div>
-          <div>
-            <span className="text-lime block mb-1">// 5 CONNECTED ROOMS</span>
-            <span>Room portals with spatial audio triggers and directional cinematic museum track-lighting.</span>
-          </div>
-          <div>
-            <span className="text-lime block mb-1">// DEDICATED 3D PHASE</span>
-            <span>Isolated in <code className="text-silver">src/features/virtual-museum/</code> ready for Three.js & Rapier physics.</span>
-          </div>
-        </div>
-
         {/* Exhibit Inspection Modal Overlay */}
         <ModalOverlay
           isOpen={!!inspectedExhibit}
@@ -238,16 +210,15 @@ export function MuseumPage() {
               />
               <div>
                 <h5 className="font-mono text-xs text-lime uppercase tracking-widest mb-1">
-                  HISTORICAL CURATION NOTE
+                  PHOTO NOTE
                 </h5>
                 <p className="font-sans text-sm text-silver leading-relaxed">
                   {inspectedExhibit.description}
                 </p>
               </div>
 
-              <div className="p-4 rounded-md bg-obsidian-surface border border-obsidian-border flex items-center justify-between font-mono text-xs text-silver-dark">
-                <span>MANIFOLD ID: {inspectedExhibit.id}</span>
-                <span className="text-lime">PRESS [ESC] TO EXIT</span>
+              <div className="flex items-center justify-end text-xs text-silver-dark">
+                <span>Press Escape to close.</span>
               </div>
             </div>
           )}

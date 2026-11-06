@@ -18,20 +18,17 @@ import { ContactPage } from '../pages/Contact';
 function NotFoundPage() {
   return (
     <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 py-20">
-      <span className="font-mono text-xs text-lime tracking-widest uppercase mb-2">
-        // ERROR 404
-      </span>
-      <h1 className="font-display text-4xl sm:text-6xl font-extrabold text-silver-bright mb-4">
-        COORDINATE NOT FOUND
+      <h1 className="mb-4 font-display text-4xl font-bold text-silver-bright sm:text-6xl">
+        Page not found
       </h1>
-      <p className="font-sans text-silver-muted text-sm sm:text-base max-w-md mb-8">
-        The requested archival node does not exist in the Trojans Collective registry.
+      <p className="mb-8 max-w-md font-sans text-sm text-silver-muted sm:text-base">
+        This page is not available.
       </p>
       <a
         href="/"
-        className="px-6 py-2.5 rounded-sm bg-lime text-obsidian font-mono text-xs uppercase tracking-wider font-semibold hover:bg-lime-hover shadow-glow-lime-sm transition-all"
+        className="rounded-sm bg-lime px-6 py-2.5 font-sans text-sm font-medium text-obsidian transition-colors hover:bg-lime-hover"
       >
-        Return to Headquarters
+        Return home
       </a>
     </div>
   );

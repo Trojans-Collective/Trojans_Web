@@ -112,7 +112,7 @@ export function ContactPage() {
                     Message Dispatched
                   </h3>
                   <p className="font-sans text-sm text-silver-muted max-w-sm mx-auto">
-                    Thank you, <span className="text-silver-bright">{form.name}</span>. Our core team leads have received your transmission and will follow up shortly.
+                    Thank you, <span className="text-silver-bright">{form.name}</span>. Your message has been received.
                   </p>
                   <Button variant="outline" size="sm" onClick={() => setSent(false)}>
                     Send Another Transmission

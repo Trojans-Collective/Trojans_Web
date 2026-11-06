@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { SectionHeader } from '../../components/ui/SectionHeader';
 import { PageTransition } from '../../components/ui/PageTransition';
-import { Badge } from '../../components/ui/Badge';
 import { Button } from '../../components/ui/Button';
 import { joinService } from '../../services/endpoints';
-import { CheckCircle2, AlertCircle, ArrowUpRight, Code, Cpu, Sparkles, Terminal } from 'lucide-react';
+import { CheckCircle2, AlertCircle, ArrowUpRight } from 'lucide-react';
 
 export function JoinPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    track: 'Engineering & Systems',
+    track: 'General interest',
     github: '',
     experience: '',
     whyTrojans: '',
@@ -38,7 +37,7 @@ export function JoinPage() {
       setStatus({
         loading: false,
         success: false,
-        error: 'Failed to submit application. Please try again or reach out on Discord.',
+        error: 'Unable to submit your message. Please try again later.',
       });
     }
   };
@@ -47,52 +46,9 @@ export function JoinPage() {
     <PageTransition>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <SectionHeader
-          index="09_RECRUITMENT"
-          tag="JOIN THE COLLECTIVE"
-          title="Apply to Join Trojans Collective"
-          subtitle="We are looking for students who build things because they can't help it. No traditional resume filters. Show us your curiosity, your problem-solving grit, and what you've built."
+          title="Join Trojans Collective"
+          subtitle="Tell us what you would like to build, explore, or be part of."
         />
-
-        {/* Tracks Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {[
-            {
-              title: 'Systems & Backend',
-              desc: 'Distributed systems, networking, Go, Rust, database optimization, cloud microservices.',
-              icon: Code,
-            },
-            {
-              title: 'Creative Tech & UI',
-              desc: 'WebGL, Three.js shaders, React, dimensional design systems, Framer Motion interactions.',
-              icon: Sparkles,
-            },
-            {
-              title: 'Machine Intelligence',
-              desc: 'Autonomous agent pipelines, LLM orchestrators, computer vision, vector databases.',
-              icon: Cpu,
-            },
-          ].map((track) => {
-            const Icon = track.icon;
-            return (
-              <div
-                key={track.title}
-                className="p-6 rounded-md bg-obsidian-surface border border-obsidian-border flex flex-col justify-between"
-              >
-                <div>
-                  <div className="p-2.5 rounded-sm bg-lime/10 text-lime w-fit mb-4">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <h4 className="font-display font-bold text-lg text-silver-bright mb-2">
-                    {track.title}
-                  </h4>
-                  <p className="font-sans text-xs text-silver-muted leading-relaxed">
-                    {track.desc}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
 
         {/* Application Form Container */}
         <div className="p-8 sm:p-10 rounded-lg bg-obsidian-card border border-obsidian-border">
@@ -102,10 +58,10 @@ export function JoinPage() {
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <h3 className="font-display text-2xl font-bold text-silver-bright">
-                Application Received // In The Queue
+                Message received
               </h3>
               <p className="font-sans text-sm text-silver-muted max-w-md mx-auto">
-                Thank you for applying, <span className="text-silver-bright font-medium">{formData.name}</span>. The Trojans Collective core leads review cohorts on a rolling basis. Watch your inbox.
+                Thank you, <span className="font-medium text-silver-bright">{formData.name}</span>.
               </p>
               <Button
                 variant="outline"
@@ -115,7 +71,7 @@ export function JoinPage() {
                   setFormData({
                     name: '',
                     email: '',
-                    track: 'Engineering & Systems',
+                    track: 'General interest',
                     github: '',
                     experience: '',
                     whyTrojans: '',
@@ -128,12 +84,7 @@ export function JoinPage() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="flex items-center justify-between pb-4 border-b border-obsidian-border">
-                <span className="font-mono text-xs text-lime uppercase tracking-widest">
-                  // COHORT CANDIDATE INGESTION
-                </span>
-                <span className="font-mono text-xs text-silver-dark">
-                  * ALL FIELDS LOGGED LOCALLY
-                </span>
+                <span className="text-sm text-silver-muted">Share a little about yourself.</span>
               </div>
 
               {status.error && (
@@ -145,11 +96,12 @@ export function JoinPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block font-mono text-xs text-silver-muted uppercase tracking-wider mb-2">
+                  <label htmlFor="join-name" className="mb-2 block text-sm text-silver-muted">
                     Full Name *
                   </label>
                   <input
                     type="text"
+                    id="join-name"
                     name="name"
                     required
                     value={formData.name}
@@ -160,11 +112,12 @@ export function JoinPage() {
                 </div>
 
                 <div>
-                  <label className="block font-mono text-xs text-silver-muted uppercase tracking-wider mb-2">
+                  <label htmlFor="join-email" className="mb-2 block text-sm text-silver-muted">
                     Email Address *
                   </label>
                   <input
                     type="email"
+                    id="join-email"
                     name="email"
                     required
                     value={formData.email}
@@ -177,28 +130,12 @@ export function JoinPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block font-mono text-xs text-silver-muted uppercase tracking-wider mb-2">
-                    Primary Track *
-                  </label>
-                  <select
-                    name="track"
-                    value={formData.track}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-sm bg-obsidian-surface border border-obsidian-border text-silver text-sm focus:outline-none focus:border-lime transition-colors"
-                  >
-                    <option value="Systems & Backend">Systems & Distributed Backend</option>
-                    <option value="Creative Tech & UI">Creative Tech & Dimensional UI</option>
-                    <option value="Machine Intelligence">Machine Intelligence & Agents</option>
-                    <option value="Competitive Hackathons">Competitive Hackathons Squad</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block font-mono text-xs text-silver-muted uppercase tracking-wider mb-2">
+                  <label htmlFor="join-github" className="mb-2 block text-sm text-silver-muted">
                     GitHub / Portfolio URL
                   </label>
                   <input
                     type="url"
+                    id="join-github"
                     name="github"
                     value={formData.github}
                     onChange={handleChange}
@@ -209,10 +146,11 @@ export function JoinPage() {
               </div>
 
               <div>
-                <label className="block font-mono text-xs text-silver-muted uppercase tracking-wider mb-2">
+                <label htmlFor="join-experience" className="mb-2 block text-sm text-silver-muted">
                   What have you built? (Projects, hackathons, or experiments)
                 </label>
                 <textarea
+                  id="join-experience"
                   name="experience"
                   rows={3}
                   value={formData.experience}
@@ -223,10 +161,11 @@ export function JoinPage() {
               </div>
 
               <div>
-                <label className="block font-mono text-xs text-silver-muted uppercase tracking-wider mb-2">
+                <label htmlFor="join-why" className="mb-2 block text-sm text-silver-muted">
                   Why Trojans Collective? *
                 </label>
                 <textarea
+                  id="join-why"
                   name="whyTrojans"
                   rows={3}
                   required
@@ -238,9 +177,6 @@ export function JoinPage() {
               </div>
 
               <div className="pt-4 border-t border-obsidian-border flex items-center justify-between">
-                <span className="font-mono text-xs text-silver-dark hidden sm:inline">
-                  NOT A CLUB. A COLLECTIVE OF BUILDERS.
-                </span>
                 <Button
                   type="submit"
                   variant="primary"

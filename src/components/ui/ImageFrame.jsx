@@ -5,8 +5,7 @@ import { cn } from '../../utils/cn';
 /**
  * ImageFrame Component
  * 
- * Enforces manifest-backed image loading, placeholder visibility,
- * aspect ratio preservation, and technical editorial styling.
+ * Enforces manifest-backed image loading, placeholder visibility, and aspect ratio preservation.
  */
 export function ImageFrame({
   assetId,
@@ -48,11 +47,7 @@ export function ImageFrame({
       <div className={cn('relative w-full overflow-hidden', ratioClassMap[aspectRatio] || 'aspect-video')}>
         {/* Subtle Loading Skeleton */}
         {!isLoaded && !hasError && (
-          <div className="absolute inset-0 bg-obsidian-card animate-pulse flex items-center justify-center">
-            <span className="font-mono text-[10px] text-silver-dark tracking-widest uppercase">
-              DECRYPTING ASSET...
-            </span>
-          </div>
+          <div className="absolute inset-0 animate-pulse bg-obsidian-card" />
         )}
 
         {/* Real / Placeholder Image */}
@@ -84,15 +79,6 @@ export function ImageFrame({
             <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-xs bg-obsidian/90 border border-lime/30 text-lime font-mono text-[9px] tracking-wider uppercase backdrop-blur-sm">
               <span className="w-1 h-1 rounded-full bg-lime animate-ping" />
               PENDING PHOTOGRAPHY
-            </span>
-          </div>
-        )}
-
-        {/* Manifest ID Tag in Bottom Corner */}
-        {currentAsset?.id && (
-          <div className="absolute bottom-2.5 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span className="font-mono text-[9px] text-silver-muted bg-obsidian/85 px-2 py-0.5 rounded-xs border border-white/10 backdrop-blur-xs tracking-wider">
-              ID: {currentAsset.id}
             </span>
           </div>
         )}

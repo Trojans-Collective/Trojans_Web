@@ -24,7 +24,7 @@ export const Button = React.forwardRef(function Button(
   },
   ref
 ) {
-  const baseStyles = 'inline-flex items-center justify-center font-mono text-xs uppercase tracking-wider font-medium transition-all duration-200 select-none cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-lime disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98]';
+  const baseStyles = 'inline-flex items-center justify-center font-sans text-sm font-medium tracking-normal transition-all duration-200 select-none cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-lime disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98]';
 
   const sizeStyles = {
     sm: 'px-3 py-1.5 text-[11px] gap-1.5 rounded-sm',

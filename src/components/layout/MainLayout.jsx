@@ -7,7 +7,7 @@ export function MainLayout() {
   return (
     <div className="min-h-screen flex flex-col bg-obsidian text-silver relative overflow-x-hidden">
       {/* Background Cyber Grid Layer */}
-      <div className="fixed inset-0 bg-cyber-grid pointer-events-none opacity-40 z-0" />
+      <div className="fixed inset-0 bg-cyber-grid pointer-events-none opacity-[0.12] z-0" />
       <div className="fixed inset-0 bg-radial-vignette pointer-events-none z-0" />
 
       {/* Navigation Header */}

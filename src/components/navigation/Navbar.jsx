@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowUpRight, Terminal } from 'lucide-react';
-import { NAV_LINKS, PRIMARY_ACTIONS } from '../../data/navigation';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { NAV_LINKS } from '../../data/navigation';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { Button } from '../ui/Button';
-import { Badge } from '../ui/Badge';
 import { cn } from '../../utils/cn';
 
 export function Navbar() {
@@ -21,17 +20,16 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b',
+          'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
           isScrolled
-            ? 'bg-obsidian/90 backdrop-blur-md border-obsidian-border py-3 shadow-card'
-            : 'bg-transparent border-transparent py-5'
+            ? 'bg-obsidian/90 py-3 backdrop-blur-md'
+            : 'bg-transparent py-5'
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Brand Logo & Identifier */}
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="relative w-9 h-9 rounded-sm overflow-hidden bg-obsidian-surface border border-obsidian-border group-hover:border-lime/50 transition-colors p-1 flex items-center justify-center">
+              <div className="flex h-9 w-9 items-center justify-center overflow-hidden p-1">
                 <img
                   src="/assets/brand/trojans-logo.svg"
                   alt="Trojans Collective Crest"
@@ -39,55 +37,32 @@ export function Navbar() {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-display font-bold text-sm tracking-wider text-silver-bright group-hover:text-lime transition-colors">
+                <span className="font-display text-sm font-bold tracking-wider text-silver-bright transition-colors group-hover:text-lime">
                   TROJANS COLLECTIVE
-                </span>
-                <span className="font-mono text-[9px] tracking-widest text-silver-dark uppercase">
-                  BUILDERS // EST. 2024
                 </span>
               </div>
             </Link>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+            <nav aria-label="Main navigation" className="hidden items-center gap-1 xl:gap-2 lg:flex">
               {NAV_LINKS.map((link) => (
                 <NavLink
                   key={link.path}
                   to={link.path}
                   className={({ isActive }) =>
                     cn(
-                      'px-3 py-1.5 rounded-sm font-mono text-xs uppercase tracking-wider transition-colors flex items-center gap-1.5',
+                      'px-2.5 py-2 font-sans text-sm transition-colors',
                       isActive
-                        ? 'text-lime bg-lime/10 border border-lime/30 font-medium'
-                        : 'text-silver-muted hover:text-white hover:bg-white/5 border border-transparent'
+                        ? 'text-lime'
+                        : 'text-silver-muted hover:text-silver-bright'
                     )
                   }
                 >
-                  <span>{link.label}</span>
-                  {link.badge && (
-                    <span className="text-[9px] px-1 py-0.2 rounded-xs bg-lime-muted text-lime border border-lime/20 font-mono">
-                      {link.badge}
-                    </span>
-                  )}
+                  {link.label}
                 </NavLink>
               ))}
             </nav>
 
-            {/* Desktop CTA & Live System Status */}
-            <div className="hidden md:flex items-center gap-3">
-              <Badge variant="lime" dot dotPulse size="sm" className="hidden xl:inline-flex">
-                SYSTEM ONLINE
-              </Badge>
-
-              <Button
-                to="/museum"
-                variant="secondary"
-                size="sm"
-                icon={Terminal}
-              >
-                Museum [3D]
-              </Button>
-
+            <div className="hidden items-center gap-4 md:flex">
               <Button
                 to="/join"
                 variant="primary"
@@ -95,11 +70,10 @@ export function Navbar() {
                 icon={ArrowUpRight}
                 iconPosition="right"
               >
-                Join Us
+                Join
               </Button>
             </div>
 
-            {/* Mobile Menu Hamburger Toggle */}
             <div className="flex items-center gap-2 lg:hidden">
               <Button
                 to="/join"
@@ -112,8 +86,10 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-sm text-silver-muted hover:text-white bg-obsidian-surface border border-obsidian-border focus:outline-none focus:ring-1 focus:ring-lime"
-                aria-label="Toggle Navigation Menu"
+                className="rounded-sm p-2 text-silver-muted transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-lime"
+                aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+                aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-navigation"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5 text-lime" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -125,66 +101,35 @@ export function Navbar() {
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-30 lg:hidden">
-          {/* Backdrop */}
-          <div
-            className="fixed inset-0 bg-obsidian-deep/90 backdrop-blur-md"
+          <button
+            type="button"
+            aria-label="Close navigation menu"
             onClick={() => setMobileMenuOpen(false)}
+            className="fixed inset-0 bg-obsidian-deep/90 backdrop-blur-md"
           />
 
-          {/* Drawer Content */}
-          <div className="fixed top-[72px] left-0 right-0 bottom-0 bg-obsidian-card border-t border-obsidian-border p-6 overflow-y-auto flex flex-col justify-between">
-            <div className="flex flex-col gap-2">
-              <div className="pb-3 mb-2 border-b border-obsidian-border flex items-center justify-between">
-                <span className="font-mono text-xs text-silver-dark uppercase tracking-widest">
-                  NAVIGATION DIRECTORY
-                </span>
-                <Badge variant="lime" dot dotPulse size="sm">
-                  ACTIVE
-                </Badge>
-              </div>
-
+          <nav id="mobile-navigation" aria-label="Mobile navigation" className="fixed bottom-0 left-0 right-0 top-[72px] flex flex-col justify-between overflow-y-auto bg-obsidian px-6 py-6">
+            <div className="flex flex-col gap-1">
               {NAV_LINKS.map((link) => (
                 <NavLink
                   key={link.path}
                   to={link.path}
                   className={({ isActive }) =>
                     cn(
-                      'p-3 rounded-sm font-mono text-sm uppercase tracking-wider flex items-center justify-between transition-colors border',
+                      'flex items-center justify-between border-b border-white/5 py-3 font-display text-lg transition-colors',
                       isActive
-                        ? 'text-lime bg-lime/10 border-lime/30 font-semibold'
-                        : 'text-silver hover:text-white hover:bg-white/5 border-obsidian-border'
+                        ? 'text-lime'
+                        : 'text-silver hover:text-white'
                     )
                   }
                 >
-                  <div className="flex flex-col">
-                    <span className="font-display font-medium text-base tracking-normal">
-                      {link.label}
-                    </span>
-                    <span className="text-[10px] text-silver-dark font-sans lowercase">
-                      {link.description}
-                    </span>
-                  </div>
-                  {link.badge ? (
-                    <span className="font-mono text-[10px] text-lime px-2 py-0.5 rounded-xs bg-lime-muted border border-lime/30">
-                      {link.badge}
-                    </span>
-                  ) : (
-                    <ArrowUpRight className="w-4 h-4 text-silver-dark" />
-                  )}
+                  {link.label}
+                  <ArrowUpRight className="h-4 w-4 text-silver-dark" />
                 </NavLink>
               ))}
             </div>
 
-            <div className="pt-6 border-t border-obsidian-border flex flex-col gap-3">
-              <Button
-                to="/museum"
-                variant="secondary"
-                size="md"
-                className="w-full justify-center"
-                icon={Terminal}
-              >
-                Virtual 3D Museum
-              </Button>
+            <div className="flex flex-col gap-3 pt-6">
               <Button
                 to="/join"
                 variant="primary"
@@ -193,13 +138,10 @@ export function Navbar() {
                 icon={ArrowUpRight}
                 iconPosition="right"
               >
-                Join Trojans Collective
+                Join the collective
               </Button>
-              <p className="text-center font-mono text-[10px] text-silver-dark mt-2 tracking-widest">
-                TROJANS COLLECTIVE // COLLECTIVE OF BUILDERS
-              </p>
             </div>
-          </div>
+          </nav>
         </div>
       )}
     </>

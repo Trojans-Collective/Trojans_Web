@@ -8,10 +8,8 @@ export function MemoriesPage() {
     <PageTransition>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <SectionHeader
-          index="02_SPATIAL_ARCHIVE"
-          tag="FLOATING MEMORIES"
-          title="Spatial Photographic Archive"
-          subtitle="An immersive spatial environment containing real photographs from Trojans Collective. Explore memories suspended in 3D obsidian space, inspect high-resolution exhibits, and discover our journey."
+          title="Photographs from the collective"
+          subtitle="Moments of making, learning and being together."
         />
 
         {/* Master Floating Memories Experience */}

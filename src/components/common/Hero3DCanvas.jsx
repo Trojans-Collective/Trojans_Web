@@ -41,9 +41,9 @@ function SpartanGeometry({ isReducedMotion }) {
       <mesh ref={meshRef}>
         <dodecahedronGeometry args={[1.5, 0]} />
         <meshStandardMaterial
-          color="#0E1113"
-          roughness={0.2}
-          metalness={0.85}
+          color="#7B8580"
+          roughness={0.36}
+          metalness={0.25}
           wireframe={false}
         />
       </mesh>
@@ -94,7 +94,7 @@ export function Hero3DCanvas() {
   }
 
   return (
-    <div className="relative w-full h-[360px] sm:h-[480px] cursor-grab active:cursor-grabbing">
+    <div className="relative h-[360px] w-full sm:h-[480px]">
       {/* Three.js Canvas Container */}
       <Canvas
         camera={{ position: [0, 0, 6], fov: 45 }}
@@ -111,10 +111,6 @@ export function Hero3DCanvas() {
         </Float>
       </Canvas>
 
-      {/* Subtle Coordinate Readout Overlay */}
-      <div className="absolute bottom-2 right-4 pointer-events-none font-mono text-[9px] text-silver-dark tracking-widest hidden sm:block">
-        RENDER: R3F // MONOLITH_SPARTAN_V1
-      </div>
     </div>
   );
 }

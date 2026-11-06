@@ -1,16 +1,23 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { FloatingMemoriesCanvas } from './FloatingMemoriesCanvas';
 import { MemoryViewerModal } from './MemoryViewerModal';
-import { assetManifest, getAssetsBySection } from '../../assets/assetManifest';
-import { Badge } from '../../components/ui/Badge';
-import { ImageFrame } from '../../components/ui/ImageFrame';
+import { assetManifest } from '../../assets/assetManifest';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
-import { LayoutGrid, Layers, Sparkles, Filter, Eye } from 'lucide-react';
+import { LayoutGrid, Layers, Eye } from 'lucide-react';
+
+const CURATED_MEMORY_IDS = [
+  'founders-group-primary',
+  'culture-late-night-build',
+  'culture-whiteboard-arch',
+  'event-code-sprint-flagship',
+  'event-tech-bytes-live',
+  'event-hackathon-victory',
+  'event-hackathon-war-room',
+  'gallery-orientation-day',
+];
 
 export function FloatingMemories({
   defaultViewMode = 'spatial', // 'spatial' or 'grid'
-  title = 'Floating Memories Archive',
-  subtitle = 'An immersive spatial photographic environment containing real photographs from Trojans Collective.',
   className = '',
 }) {
   const isReducedMotion = useReducedMotion();
@@ -18,12 +25,16 @@ export function FloatingMemories({
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedMemory, setSelectedMemory] = useState(null);
 
-  // Extract all verified photographs from the manifest (where isPlaceholder: false)
+  useEffect(() => {
+    if (isReducedMotion) setViewMode('grid');
+  }, [isReducedMotion]);
+
   const verifiedMemories = useMemo(() => {
-    return assetManifest.filter((asset) => !asset.isPlaceholder && asset.id !== 'brand-logo-main');
+    return CURATED_MEMORY_IDS
+      .map((id) => assetManifest.find((asset) => asset.id === id))
+      .filter((asset) => asset && !asset.isPlaceholder);
   }, []);
 
-  // Compute available categories dynamically based on where real photographs actually exist
   const availableCategories = useMemo(() => {
     const cats = new Set(['All']);
     verifiedMemories.forEach((item) => {
@@ -32,13 +43,11 @@ export function FloatingMemories({
     return Array.from(cats);
   }, [verifiedMemories]);
 
-  // Filter memories according to selected category
   const filteredMemories = useMemo(() => {
     if (activeCategory === 'All') return verifiedMemories;
     return verifiedMemories.filter((item) => item.category === activeCategory);
   }, [activeCategory, verifiedMemories]);
 
-  // Next / Prev handlers for the full-screen viewer
   const handleNext = () => {
     if (!selectedMemory || filteredMemories.length <= 1) return;
     const currentIndex = filteredMemories.findIndex((m) => m.id === selectedMemory.id);
@@ -55,63 +64,45 @@ export function FloatingMemories({
 
   return (
     <div className={`relative w-full ${className}`}>
-      {/* Control Bar: Categories & Mode Switcher */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 pb-6 border-b border-obsidian-border">
-        {/* Left: Dynamic Categories */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-2 lg:pb-0 scrollbar-none">
-          {availableCategories.map((cat) => {
-            const isActive = activeCategory === cat;
-            return (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setActiveCategory(cat)}
-                className={`px-3 py-1.5 rounded-sm font-mono text-xs uppercase tracking-wider whitespace-nowrap transition-all border ${
-                  isActive
-                    ? 'bg-lime text-obsidian border-lime font-bold shadow-glow-lime-sm'
-                    : 'bg-obsidian-surface text-silver-muted border-obsidian-border hover:text-white hover:border-white/20'
-                }`}
-              >
-                {cat}
-              </button>
-            );
-          })}
-        </div>
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+        <label className="sr-only" htmlFor="memory-category">Photograph collection</label>
+        <select
+          id="memory-category"
+          value={activeCategory}
+          onChange={(event) => setActiveCategory(event.target.value)}
+          className="max-w-[220px] rounded-sm border border-white/10 bg-obsidian-surface px-3 py-2 text-sm text-silver-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-lime"
+        >
+          {availableCategories.map((category) => <option key={category}>{category}</option>)}
+        </select>
 
-        {/* Right: View Mode Toggle & Telemetry */}
-        <div className="flex items-center gap-3 shrink-0">
-          <Badge variant="lime" dot size="sm">
-            {filteredMemories.length} VERIFIED EXHIBITS
-          </Badge>
-
-          <div className="flex items-center p-1 rounded-sm bg-obsidian-surface border border-obsidian-border">
+        <div className="flex items-center gap-1">
             <button
               type="button"
               onClick={() => setViewMode('spatial')}
-              className={`p-1.5 rounded-xs font-mono text-xs flex items-center gap-1.5 transition-colors ${
+              aria-pressed={viewMode === 'spatial' && !isReducedMotion}
+              disabled={isReducedMotion}
+              aria-label="Spatial photo field"
+              className={`rounded-sm p-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-lime ${
                 viewMode === 'spatial'
-                  ? 'bg-lime text-obsidian font-bold'
-                  : 'text-silver-muted hover:text-white'
+                  ? 'text-lime'
+                  : 'text-silver-muted hover:text-silver-bright'
               }`}
-              title="Spatial 3D Canvas View"
             >
-              <Layers className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">SPATIAL 3D</span>
+              <Layers className="h-4 w-4" />
             </button>
             <button
               type="button"
               onClick={() => setViewMode('grid')}
-              className={`p-1.5 rounded-xs font-mono text-xs flex items-center gap-1.5 transition-colors ${
+              aria-pressed={viewMode === 'grid'}
+              aria-label="Photograph grid"
+              className={`rounded-sm p-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-lime ${
                 viewMode === 'grid'
-                  ? 'bg-lime text-obsidian font-bold'
-                  : 'text-silver-muted hover:text-white'
+                  ? 'text-lime'
+                  : 'text-silver-muted hover:text-silver-bright'
               }`}
-              title="Editorial Grid View"
             >
-              <LayoutGrid className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">GRID</span>
+              <LayoutGrid className="h-4 w-4" />
             </button>
-          </div>
         </div>
       </div>
 
@@ -122,36 +113,28 @@ export function FloatingMemories({
           onSelectMemory={(mem) => setSelectedMemory(mem)}
         />
       ) : (
-        /* Conventional Grid Fallback */
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filteredMemories.map((item) => (
-            <div
+            <button
               key={item.id}
+              type="button"
               onClick={() => setSelectedMemory(item)}
-              className="group cursor-pointer p-3 rounded-md bg-obsidian-card border border-obsidian-border hover:border-lime/40 transition-all flex flex-col justify-between"
+              className="group text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-lime"
             >
-              <div className="relative overflow-hidden rounded-sm mb-3">
-                <ImageFrame
-                  asset={item}
-                  aspectRatio={item.aspectRatio === '4:5' ? '4/5' : item.aspectRatio === '21:9' ? '21/9' : '16/9'}
-                  showPlaceholderTag={false}
+              <div className="relative mb-3 overflow-hidden bg-obsidian-surface">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 />
               </div>
-
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="font-mono text-[9px] text-lime uppercase tracking-widest block">
-                    {item.category}
-                  </span>
-                  <h4 className="font-display font-semibold text-sm text-silver-bright group-hover:text-lime transition-colors">
-                    {item.title}
-                  </h4>
-                </div>
-                <div className="p-1 rounded-xs bg-obsidian-surface text-silver-muted group-hover:text-white group-hover:bg-white/10 transition-colors">
-                  <Eye className="w-4 h-4" />
-                </div>
-              </div>
-            </div>
+              <span className="flex items-center justify-between gap-3">
+                <span className="font-display text-sm text-silver-bright group-hover:text-lime">{item.title}</span>
+                <Eye className="h-4 w-4 shrink-0 text-silver-muted" />
+              </span>
+            </button>
           ))}
         </div>
       )}
