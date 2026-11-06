@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#E2E4E8" />
+      <stop offset="100%" stop-color="#8E959E" />
+    </linearGradient>
+    <linearGradient id="limeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5FF4D" />
+      <stop offset="100%" stop-color="#D4FF00" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Dark Shield Base Background -->
+  <rect width="200" height="200" rx="16" fill="#08090A"/>
+  
+  <!-- Subtle Outer Precision Ring -->
+  <circle cx="100" cy="100" r="82" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4 6" />
+
+  <!-- Spartan / Monolith Crest Silhouette -->
+  <!-- Geometric Trojan Plume & Helmet Peak -->
+  <polygon points="100,28 116,68 84,68" fill="url(#limeGrad)" filter="url(#glow)" opacity="0.95" />
+  <polygon points="100,42 110,74 90,74" fill="#FFFFFF" />
+  
+  <!-- Helmet Cheekplates / Dimensional T-Form -->
+  <!-- Left Wing -->
+  <path d="M52,78 L90,78 L90,140 L68,140 L52,106 Z" fill="url(#silverGrad)" />
+  <!-- Right Wing -->
+  <path d="M148,78 L110,78 L110,140 L132,140 L148,106 Z" fill="url(#silverGrad)" />
+  
+  <!-- Center Builder Monolith (The 'T' Pillar / Nose Bridge) -->
+  <polygon points="94,84 106,84 106,162 94,162" fill="url(#silverGrad)" />
+
+  <!-- Electric Lime Core Energy Accent -->
+  <polygon points="97,94 103,94 103,138 97,138" fill="#D4FF00" filter="url(#glow)" />
+  <circle cx="100" cy="154" r="3" fill="#D4FF00" />
+  
+  <!-- Corner Tech Markers -->
+  <line x1="20" y1="20" x2="30" y2="20" stroke="#D4FF00" stroke-width="1.5" />
+  <line x1="20" y1="20" x2="20" y2="30" stroke="#D4FF00" stroke-width="1.5" />
+  <line x1="180" y1="20" x2="170" y2="20" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+  <line x1="180" y1="20" x2="180" y2="30" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
+</svg>

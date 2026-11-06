@@ -1,0 +1,49 @@
+:root {
+  /* Obsidian & Charcoal Backgrounds */
+  --color-obsidian-deep: #040506;
+  --color-obsidian: #08090a;
+  --color-obsidian-surface: #0e1113;
+  --color-obsidian-card: #121518;
+  --color-charcoal: #161a1d;
+  --color-charcoal-muted: #21262b;
+  --color-charcoal-light: #2d3339;
+
+  /* Metallic Silver & Whites */
+  --color-silver-bright: #f5f6f8;
+  --color-silver: #e2e4e8;
+  --color-silver-muted: #9ca3af;
+  --color-silver-dark: #606770;
+
+  /* Electric Lime Accents */
+  --color-lime: #d4ff00;
+  --color-lime-hover: #e2ff33;
+  --color-lime-dark: #a6c800;
+  --color-lime-muted: rgba(212, 255, 0, 0.12);
+  --color-lime-glow: rgba(212, 255, 0, 0.28);
+
+  /* Spartan Heritage Accent */
+  --color-spartan: #8b1e22;
+  --color-spartan-subtle: rgba(139, 30, 34, 0.2);
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-active: rgba(212, 255, 0, 0.35);
+
+  /* Radii (Sharp & Architectural) */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  /* Typography Families */
+  --font-display: 'Space Grotesk', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Space Mono', monospace;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-deliberate: 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}

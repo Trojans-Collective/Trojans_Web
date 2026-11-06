@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1114" />
+      <stop offset="100%" stop-color="#08090A" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgGrad)" />
+  <rect width="1200" height="675" fill="url(#grid)" />
+  
+  <!-- Outer Technical Border -->
+  <rect x="24" y="24" width="1152" height="627" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+  
+  <!-- Corner Crosshairs -->
+  <path d="M16 24 L32 24 M24 16 L24 32" stroke="#D4FF00" stroke-width="2" />
+  <path d="M1168 24 L1184 24 M1176 16 L1176 32" stroke="#D4FF00" stroke-width="2" />
+  <path d="M16 651 L32 651 M24 643 L24 659" stroke="#D4FF00" stroke-width="2" />
+  <path d="M1168 651 L1184 651 M1176 643 L1176 659" stroke="#D4FF00" stroke-width="2" />
+
+  <!-- Center Watermark & Spec -->
+  <g transform="translate(600, 310)" text-anchor="middle">
+    <!-- Subtle Icon -->
+    <circle cx="0" cy="-40" r="32" fill="none" stroke="rgba(212, 255, 0, 0.2)" stroke-width="1.5" stroke-dasharray="4 4" />
+    <polygon points="0,-56 12,-32 -12,-32" fill="none" stroke="#D4FF00" stroke-width="1.5" />
+    <path d="M-8,-26 L8,-26 L8,-12 L-8,-12 Z" fill="none" stroke="#E2E4E8" stroke-width="1.5" />
+    
+    <text y="24" font-family="'Space Grotesk', sans-serif" font-size="16" font-weight="700" letter-spacing="4" fill="#E2E4E8">
+      TROJANS COLLECTIVE // ARCHIVAL ASSET
+    </text>
+    <text y="52" font-family="'JetBrains Mono', monospace" font-size="12" letter-spacing="2" fill="#D4FF00">
+      ASSET PLACEHOLDER — 16:9 LANDSCAPE
+    </text>
+    <text y="78" font-family="'Inter', sans-serif" font-size="11" letter-spacing="1" fill="#6B7280">
+      PENDING VERIFIED PHOTOGRAPHY
+    </text>
+  </g>
+
+  <!-- Technical Readouts -->
+  <text x="44" y="630" font-family="'JetBrains Mono', monospace" font-size="10" fill="#4B5563" letter-spacing="1.5">
+    SPEC: 1920x1080 / 1200x675 • RATIO 16:9 • FORMAT: WEBP/JPG
+  </text>
+  <text x="1156" y="630" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="10" fill="#4B5563" letter-spacing="1.5">
+    SYSTEM NODE: ASSET_MANIFEST_V1
+  </text>
+</svg>
