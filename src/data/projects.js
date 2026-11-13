@@ -1,9 +1,56 @@
+/**
+ * TROJANS COLLECTIVE — PROJECTS DATA ARCHIVE
+ */
+
+export const PROJECT_CATEGORIES = [
+  'All',
+  'Distributed Systems',
+  'AI & Security',
+  'Creative Tech',
+];
+
 export const PROJECTS_DATA = [
   {
-    id: 'mesh-os-preview',
-    title: 'MeshOS preview',
-    description: 'A preview image from the project archive.',
+    id: 'mesh-os',
+    title: 'MeshOS',
+    tagline: 'Decentralized peer-to-peer telemetry and edge compute fabric.',
+    description: 'A distributed edge-computing framework created by Trojans Collective builders for coordinating lightweight compute tasks across heterogeneous devices during hackathons and distributed sprints.',
     assetId: 'project-mesh-os',
+    category: 'Distributed Systems',
+    status: 'Production / Open Source',
+    tags: ['Rust', 'WebAssembly', 'libp2p', 'React', 'Tailwind CSS'],
+    year: '2024',
+    githubUrl: 'https://github.com',
+    liveUrl: null,
+    featured: true,
+  },
+  {
+    id: 'sentinel-ai',
+    title: 'Sentinel AI',
+    tagline: 'Autonomous static analysis & vulnerability auditor.',
+    description: 'Autonomous security agent built during a 36-hour national hackathon that monitors codebases, analyzes AST diffs, and synthesizes security patch pull requests automatically.',
+    assetId: 'project-sentinel-ai',
+    category: 'AI & Security',
+    status: 'Hackathon Grand Prize',
+    tags: ['Python', 'FastAPI', 'Tree-sitter', 'LLM Agents', 'Docker'],
+    year: '2024',
+    githubUrl: 'https://github.com',
+    liveUrl: null,
+    featured: true,
+  },
+  {
+    id: 'spartan-canvas',
+    title: 'Spartan Canvas',
+    tagline: 'GPU-accelerated procedural graphic synthesis workstation.',
+    description: 'Web-based creative coding environment enabling real-time shader compilation, timeline sequencing, and procedural generative art export.',
+    assetId: 'project-spartan-canvas',
+    category: 'Creative Tech',
+    status: 'Experimental Prototype',
+    tags: ['WebGL', 'GLSL', 'Three.js', 'WebAudio API'],
+    year: '2024',
+    githubUrl: 'https://github.com',
+    liveUrl: null,
+    featured: true,
   },
 ];
 

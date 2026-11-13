@@ -9,20 +9,22 @@ export function TypographyWord({
 }) {
   const shadow = isReducedMotion
     ? 'none'
-    : `${-pointerX * 5}px ${10 + pointerY * 4}px 0 rgba(53, 59, 61, 0.9), ${-pointerX * 9}px ${18 + pointerY * 6}px 24px rgba(0, 0, 0, 0.5)`;
+    : `${-pointerX * 6}px ${8 + pointerY * 4}px 0 rgba(35, 42, 45, 0.85), ${-pointerX * 12}px ${16 + pointerY * 8}px 28px rgba(0, 0, 0, 0.6)`;
 
   return (
-    <h2
-      className="max-w-full whitespace-nowrap text-center font-display text-[clamp(3rem,12vw,9rem)] font-bold uppercase leading-[0.86] tracking-[-0.065em] text-silver-bright"
-      style={{
-        color: accent === '#d4ff00' ? accent : undefined,
-        textShadow: shadow,
-        transform: isReducedMotion ? 'none' : `translate3d(${pointerX * 2}px, ${pointerY * 2}px, 30px)`,
-        transition: isReducedMotion ? 'none' : 'transform 180ms ease-out, text-shadow 180ms ease-out',
-      }}
-    >
-      {word}
-    </h2>
+    <div className="relative inline-block select-none px-2 py-4">
+      <h2
+        className="max-w-full text-center font-display text-[clamp(2.75rem,8.5vw,7.5rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.04em] transition-colors duration-300"
+        style={{
+          color: accent,
+          textShadow: shadow,
+          transform: isReducedMotion ? 'none' : `translate3d(${pointerX * 3}px, ${pointerY * 3}px, 24px)`,
+          transition: isReducedMotion ? 'none' : 'transform 180ms cubic-bezier(0.16, 1, 0.3, 1), text-shadow 180ms ease-out',
+        }}
+      >
+        {word}
+      </h2>
+    </div>
   );
 }
 
