@@ -38,7 +38,7 @@ export function AchievementsPage() {
                 <ImageFrame
                   assetId="achievement-national-trophy"
                   aspectRatio="4/5"
-                  caption="National Hackathon Grand Champions Trophy"
+                  caption="National -Level Hackathon Champions"
                   priority={true}
                 />
                 <div className="absolute top-4 right-4">
@@ -53,14 +53,14 @@ export function AchievementsPage() {
             <div className="lg:col-span-7 flex flex-col justify-between">
               <div>
                 <span className="font-mono text-xs text-lime uppercase tracking-wider block mb-2">
-                  Apex Tech Hackathon Circuit
+                  DevFusion 2.0 Hackathon by IIT BOMBAY 
                 </span>
                 <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-silver-bright mb-4">
-                  National Hackathon Grand Champions
+                  National- Level Hackathon Champions
                 </h2>
 
                 <p className="font-sans text-base sm:text-lg text-silver-muted leading-relaxed mb-6">
-                  Awarded first place among 200+ collegiate teams for engineering an autonomous distributed vulnerability auditor under 36-hour sprint constraints.
+                  Secured 3rd place among 250+ collegiate teams after successfully clearing two rounds of online assessments, project reviews and the final round.
                 </p>
 
                 <div className="space-y-3 mb-8">
@@ -70,15 +70,15 @@ export function AchievementsPage() {
                   <ul className="space-y-2 text-sm text-silver-muted font-sans">
                     <li className="flex items-start gap-2.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-lime mt-2 shrink-0" />
-                      <span>Engineered an AST-level syntax auditing pipeline analyzing vulnerability diffs</span>
+                      <span>Cleared Online Assesment Round with 100% score</span>
                     </li>
                     <li className="flex items-start gap-2.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-lime mt-2 shrink-0" />
-                      <span>Demonstrated live autonomous patch generation against injected zero-day test cases</span>
+                      <span>Second Round Covered showcasing previous work and live demo of the projects</span>
                     </li>
                     <li className="flex items-start gap-2.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-lime mt-2 shrink-0" />
-                      <span>Unanimous 1st place evaluation by senior security architects and technical judges</span>
+                      <span>Finals: Created an entire system based on the problem statement and presented it to the judges</span>
                     </li>
                   </ul>
                 </div>
@@ -86,10 +86,10 @@ export function AchievementsPage() {
 
               <div className="pt-6 border-t border-obsidian-border flex flex-wrap gap-3">
                 <span className="font-mono text-xs px-3 py-1 rounded bg-obsidian-deep border border-obsidian-border text-silver">
-                  Rank: 1st Place Overall
+                  Rank: 3rd Place Overall
                 </span>
                 <span className="font-mono text-xs px-3 py-1 rounded bg-obsidian-deep border border-obsidian-border text-silver">
-                  Format: 36-Hour Competitive Sprint
+                  Format: 3 Rounds Hackathon
                 </span>
               </div>
             </div>
