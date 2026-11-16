@@ -67,7 +67,7 @@ export function PeoplePage() {
                     assetId="founder-portrait-lead"
                     aspectRatio="4/5"
                     className="w-full"
-                    caption="Lead Founder & Strategic Architect"
+                    caption="Bhargav Bhamare — Lead Founder & Architect"
                   />
                 </div>
                 <div className="flex items-center justify-between mb-3">
@@ -84,7 +84,7 @@ export function PeoplePage() {
                   </span>
                 </div>
                 <p className="font-sans text-base text-silver-muted leading-relaxed mb-6">
-                  Initiated Trojans Collective as an open arena for builder culture, competitive engineering, and rapid prototyping across collegiate hackathons.
+                  Initiated Trojans Collective as an open arena for builder culture, competitive engineering and rapid prototyping across collegiate hackathons.
                 </p>
               </div>
 
@@ -117,30 +117,30 @@ export function PeoplePage() {
                     assetId="founder-portrait-co"
                     aspectRatio="4/5"
                     className="w-full"
-                    caption="Technical Co-Founder (Systems & Engineering)"
+                    caption="Palak Bisane — Co-Founder (AI Engineering & Research)"
                   />
                 </div>
                 <div className="flex items-center justify-between mb-3">
                   <div>
                     <h3 className="font-display text-2xl sm:text-3xl font-bold text-silver-bright">
-                      Technical Co-Founder
+                      Co-Founder & Innovator
                     </h3>
-                    <p className="font-sans text-sm text-silver font-medium mt-0.5">
+                    <p className="font-sans text-sm text-lime font-medium mt-0.5">
                       Co-Founder & Head of Systems
                     </p>
                   </div>
                   <span className="font-mono text-xs uppercase tracking-wider text-silver px-2.5 py-1 rounded bg-white/5 border border-white/10">
-                    Leadership
+                   Co-Founder
                   </span>
                 </div>
                 <p className="font-sans text-base text-silver-muted leading-relaxed mb-4">
-                  Co-directs engineering squads, high-performance runtime infrastructure, and competitive hackathon architecture across the collective.
+                  Co-directs engineering squads, high-performance runtime infrastructure and competitive hackathon architecture across the collective.
                 </p>
-                <div className="mb-6 px-3.5 py-2.5 rounded bg-obsidian-deep/90 border border-white/5">
+                {/* <div className="mb-6 px-3.5 py-2.5 rounded bg-obsidian-deep/90 border border-white/5">
                   <p className="font-mono text-xs text-silver-dark leading-relaxed">
                     * Systems & Engineering Co-Founder — Bio & handle verification in progress.
                   </p>
-                </div>
+                </div> */}
               </div>
 
               <div>
