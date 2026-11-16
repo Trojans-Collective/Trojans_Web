@@ -108,7 +108,7 @@ export function MemoriesPage() {
                 <ImageFrame
                   asset={photo}
                   aspectRatio={photo.aspectRatio === '4:5' ? '4/5' : '16/9'}
-                  caption={photo.title}
+                  caption={photo.name || photo.title}
                 />
                 <div className="p-4 bg-obsidian-card border-t border-obsidian-border">
                   <div className="flex items-center justify-between mb-1">
