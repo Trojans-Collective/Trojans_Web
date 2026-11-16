@@ -48,11 +48,11 @@ export const MUSEUM_ROOMS = [
 export const ACHIEVEMENTS_DATA = [
   {
     id: 'trophy-national-champ',
-    title: 'National Hackathon Grand Champions',
-    issuer: 'Apex Tech Hackathon Circuit',
+    title: 'National Hackathon Champions',
+    issuer: 'IIT Bombay',
     date: 'Championship Season',
     assetId: 'achievement-national-trophy',
-    rank: '1st Place Overall',
+    rank: 'Rank 3 from 250+ teams',
     category: 'Championship',
     summary: 'Awarded first place among 200+ collegiate teams for engineering an autonomous distributed vulnerability auditor under 36-hour sprint constraints.',
     details: [
