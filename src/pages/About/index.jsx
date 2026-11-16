@@ -43,12 +43,12 @@ export function AboutPage() {
     {
       year: 'Sprint 01',
       title: 'Code Sprint Launch',
-      detail: 'Hosted our inaugural 24-hour sprint arena, drawing 120+ participants and deploying 18 production prototypes across multiple disciplines.',
+      detail: 'Hosted our Internal 7 days code sprint , seven days of building, breaking, collaborating and turning ideas into working solutions.',
     },
     {
       year: 'The Arena',
-      title: 'National Grand Championship',
-      detail: 'Trojans Collective fielded multidisciplinary squads to national competitive hackathons, seizing 1st place overall and the grand trophy.',
+      title: 'National Level Hackathons',
+      detail: 'Trojans Collective participates in national-level hackathons, with our debut hackathon journey taking us to the Top 7 finalists among 400+ participating teams.',
     },
     {
       year: 'Present Day',
@@ -80,7 +80,7 @@ export function AboutPage() {
           <ImageFrame
             assetId="founders-group-primary"
             aspectRatio="16/9"
-            caption="The Trojans Collective assembly — The founders and early builders who established our engineering culture."
+            caption="Founders of Trojans Collective — The minds behind the vision and the people who brought Trojans Collective to life."
             priority={true}
           />
         </div>
@@ -150,11 +150,11 @@ export function AboutPage() {
             <ImageFrame
               assetId="culture-whiteboard-arch"
               aspectRatio="16/9"
-              caption="Architecture Whiteboard Session — Diagramming system topologies and service boundaries."
+              caption="Hackathon Discussions — Diagramming system topologies and service boundaries."
             />
             <div className="p-6">
               <h3 className="font-display text-xl font-bold text-silver-bright mb-2">
-                Whiteboard Ideation
+                Hackathon Discussions
               </h3>
               <p className="font-sans text-sm text-silver-muted leading-relaxed">
                 Before writing code, we dissect problem spaces on the glass. Every architectural tradeoff is debated openly.
