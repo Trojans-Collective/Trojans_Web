@@ -53,6 +53,7 @@ export function MuseumPage() {
             <p className="font-mono text-[9px] sm:text-[10px] text-lime/80 uppercase tracking-widest mt-0.5">
               3D Spatial Photographic Archive
             </p>
+            <br />
           </div>
 
           {/* Future Playable Museum Entry Point */}

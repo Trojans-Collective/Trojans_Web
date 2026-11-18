@@ -61,7 +61,7 @@ export function ProjectsPage() {
                   <ImageFrame
                     assetId="project-mesh-os"
                     aspectRatio="16/9"
-                    caption="MeshOS WebGL Telemetry & Node Discovery Fabric."
+                    caption="Trojans Quiz Arena"
                     priority={true}
                   />
                 </div>
@@ -71,10 +71,10 @@ export function ProjectsPage() {
                 <div>
                   <div className="inline-flex items-center gap-2 font-mono text-xs text-lime uppercase tracking-wider mb-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-lime animate-pulse" />
-                    Flagship Project
+                    Code Sprint Project
                   </div>
                   <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-silver-bright mb-3">
-                    MeshOS
+                    Trojans Quiz Arena
                   </h2>
                   <p className="font-sans text-sm sm:text-base text-silver-muted leading-relaxed mb-6">
                     A distributed edge-computing framework created by Trojans Collective builders for coordinating lightweight compute tasks across heterogeneous devices during hackathons and distributed sprints.
@@ -99,7 +99,7 @@ export function ProjectsPage() {
                   </ul>
 
                   <div className="flex flex-wrap gap-2 mb-8">
-                    {['Rust', 'WebAssembly', 'libp2p', 'React', 'Tailwind CSS'].map((tag) => (
+                    {['MONGODB', 'NODE.JS', 'EXPRESS.JS', 'React', 'Tailwind CSS'].map((tag) => (
                       <span
                         key={tag}
                         className="font-mono text-xs px-2.5 py-1 rounded bg-obsidian-deep border border-obsidian-border text-silver"
